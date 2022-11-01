@@ -8,7 +8,7 @@ import {
   Typography,
 } from "@mui/material";
 import { Box } from "@mui/system";
-import React from "react";
+import React, { useState } from "react";
 import { useParams } from "react-router-dom";
 import DoctorNavbar from "../components/DoctorNavbar/DoctorNavbar";
 import PatientDetailCard from "../components/PatientDetailsCard/PatientDetailsCard";
@@ -25,13 +25,13 @@ const patientDetails = [
     name: "ABC",
     uhid: "2231233",
     birthDate: new Date("2001-10-09"),
-    temp: "",
-    pulse: "",
-    respRate: "",
-    spO2: "",
-    cbg: "",
-    bp: "",
-    avpu: "",
+    temp: "98.2",
+    pulse: "70 per minute",
+    respRate: "15 per minute",
+    spO2: "98",
+    cbg: "82.3 mg/dL",
+    bp: "124/78 mm/Hg",
+    avpu: "Alert",
     doctor: "Dr. James Martin",
     recTime: "14:58 PM, 27-06-2022",
   },
@@ -53,6 +53,58 @@ const patientDetails = [
 
 const PatientDetails = () => {
   const { uhid } = useParams();
+  const [temp, setTemp] = useState("");
+  const [pulse, setPulse] = useState("");
+  const [respRate, setRespRate] = useState("");
+  const [bp, setBp] = useState("");
+  const [spO2, setSpO2] = useState("");
+  const [cbg, setCbg] = useState("");
+
+  const handleTempChange = (e) => {
+    setTemp(e.target.value);
+  };
+
+  const handlePulseChange = (e) => {
+    setPulse(e.target.value);
+  };
+
+  const handleRespRateChange = (e) => {
+    setRespRate(e.target.value);
+  };
+
+  const handleBpChange = (e) => {
+    setBp(e.target.value);
+  };
+
+  const handleSpO2Change = (e) => {
+    setSpO2(e.target.value);
+  };
+
+  const handleCbgChange = (e) => {
+    setCbg(e.target.value);
+  };
+
+  const handleClearClick = () => {
+    setTemp("");
+    setPulse("");
+    setRespRate("");
+    setBp("");
+    setSpO2("");
+    setCbg("");
+  };
+
+  const handleSaveClick = () => {
+    const patientVitals = {
+      temp: temp,
+      pulse: pulse,
+      respRate: respRate,
+      bp: bp,
+      spO2: spO2,
+      cbg: cbg,
+    };
+    console.log(patientVitals);
+  };
+
   return (
     <Box sx={{ display: "flex" }}>
       <DoctorNavbar />
@@ -245,8 +297,8 @@ const PatientDetails = () => {
                   fullWidth
                   variant="outlined"
                   label="Temperature"
-                  value=""
-                  // onChange={handleUhidChange}
+                  value={temp}
+                  onChange={handleTempChange}
                 />
               </Grid>
               <Grid item xs={6} md={6}>
@@ -254,8 +306,8 @@ const PatientDetails = () => {
                   fullWidth
                   variant="outlined"
                   label="Pulse"
-                  value=""
-                  // onChange={handleUhidChange}
+                  value={pulse}
+                  onChange={handlePulseChange}
                 />
               </Grid>
               <Grid item xs={6} md={6}>
@@ -263,8 +315,8 @@ const PatientDetails = () => {
                   fullWidth
                   variant="outlined"
                   label="Respiratory Rate"
-                  value=""
-                  // onChange={handleUhidChange}
+                  value={respRate}
+                  onChange={handleRespRateChange}
                 />
               </Grid>
               <Grid item xs={6} md={6}>
@@ -272,8 +324,8 @@ const PatientDetails = () => {
                   fullWidth
                   variant="outlined"
                   label="BP"
-                  value=""
-                  // onChange={handleUhidChange}
+                  value={bp}
+                  onChange={handleBpChange}
                 />
               </Grid>
               <Grid item xs={6} md={6}>
@@ -281,8 +333,8 @@ const PatientDetails = () => {
                   fullWidth
                   variant="outlined"
                   label="SpO2"
-                  value=""
-                  // onChange={handleUhidChange}
+                  value={spO2}
+                  onChange={handleSpO2Change}
                 />
               </Grid>
               <Grid item xs={6} md={6}>
@@ -290,8 +342,8 @@ const PatientDetails = () => {
                   fullWidth
                   variant="outlined"
                   label="CBG"
-                  value=""
-                  // onChange={handleUhidChange}
+                  value={cbg}
+                  onChange={handleCbgChange}
                 />
               </Grid>
               <Grid item xs={12} md={6}>
@@ -322,7 +374,7 @@ const PatientDetails = () => {
               <Grid item xs={4} md={6}>
                 <Button
                   variant="contained"
-                  // onClick={handleDetailsClick}
+                  onClick={handleClearClick}
                   sx={{
                     width: "100%",
                     backgroundColor: "#3F51B5",
@@ -335,7 +387,7 @@ const PatientDetails = () => {
               <Grid item xs={4} md={6}>
                 <Button
                   variant="contained"
-                  // onClick={handleDetailsClick}
+                  onClick={handleSaveClick}
                   sx={{
                     width: "100%",
                     backgroundColor: "#3F51B5",
