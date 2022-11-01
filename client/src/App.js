@@ -6,17 +6,24 @@ import HomeScreen from "./Pages/HomeScreen";
 import SignIn from "./Pages/SignIn";
 import PreRegistration from "./Pages/PreRegistration";
 import PatientQrCode from "./Pages/PatientQrCode";
+import DoctorHome from "./Pages/DoctorHome";
+import PatientDetails from "./Pages/PatientDetails";
 
 function App() {
-	return (
-		<Routes>
-			<Route path="/registration" element={<Registration />} />
-			<Route path="/" element={<HomeScreen />} />
-			<Route path="/:role/signIn" element={<SignIn />} />
-			<Route path="/paramedic/*" element={<PreRegistration />} />
-			<Route path="/patient/QR/:id" element={<PatientQrCode />} />
-		</Routes>
-	);
+  return (
+    <Routes>
+      <Route path="/registration" element={<Registration />} />
+      <Route path="/" element={<HomeScreen />} />
+      <Route path="/:role/signIn" element={<SignIn />} />
+      <Route path="/paramedic/*" element={<PreRegistration />} />
+      <Route path="/patient/QR/:id" element={<PatientQrCode />} />
+      <Route path="/doctor/*" element={<DoctorHome />} />
+      <Route
+        path="/doctor/patient-details/:uhid"
+        element={<PatientDetails />}
+      />
+    </Routes>
+  );
 }
 
 export default App;
