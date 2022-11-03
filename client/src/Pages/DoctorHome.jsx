@@ -11,8 +11,14 @@ import QrCode2Icon from '@mui/icons-material/QrCode2';
 import BadgeIcon from '@mui/icons-material/Badge';
 import LogoutIcon from '@mui/icons-material/Logout';
 import React from 'react';
-import { Link } from 'react-router-dom';
+import {Link, useNavigate} from 'react-router-dom';
+import {userLogout} from "../redux/user/user.action";
+import {useDispatch} from "react-redux";
+
 const DoctorHome = () => {
+  const navigate = useNavigate();
+  const dispatch = useDispatch();
+
   return (
     <Grid
       container
@@ -198,6 +204,10 @@ const DoctorHome = () => {
                         display: 'flex',
                         justifyContent: 'center',
                         flexDirection: 'column',
+                      }}
+                      onClick={() => {
+                        dispatch(userLogout());
+                        navigate("/");
                       }}
                     >
                       <Typography variant="body1" gutterBottom sx={{ pl: 2 }}>

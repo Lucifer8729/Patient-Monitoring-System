@@ -52,9 +52,12 @@ const SignIn = ({ userType }) => {
 		// if (role === "paramedic") {
 		// 	navigate(`/${role.toLocaleLowerCase()}/pre-registration`);
 		// }
-		dispatch(userLogin(username, values.password, role))
+		dispatch(userLogin(username, values.password, "paramedic"))
 			.then((response) => {
 				// console.log(response);
+				if(response.payload && role === "doctor"){
+					navigate(`/${role.toLocaleLowerCase()}/home`);
+				}
 				if (response.payload && role === "paramedic") {
 					navigate(`/${role.toLocaleLowerCase()}/pre-registration`);
 				}

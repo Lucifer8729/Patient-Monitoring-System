@@ -18,7 +18,7 @@ function App() {
       <Route path="/:role/signIn" element={<SignIn />} />
       <Route path="/paramedic/*" element={<PreRegistration />} />
       <Route path="/patient/QR/:id" element={<PatientQrCode />} />
-      <Route path="/doctor" element={<DoctorHome />} />
+      <Route path="/doctor/*" element={<DoctorHome />} />
       <Route
         path="/doctor/patient-details/:uhid"
         element={<PatientDetails />}
