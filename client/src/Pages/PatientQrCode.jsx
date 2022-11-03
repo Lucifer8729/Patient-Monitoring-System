@@ -18,7 +18,9 @@ const PatientQrCode = () => {
   const generateQrCode = async () => {
     // console.log(id);
     try {
-      const response = await QRCode.toDataURL(`/doctor/patient-details/${id}`);
+      const response = await QRCode.toDataURL(
+        `https://pms-mernapp-demo.netlify.app/doctor/patient-details/${id}`
+      );
       setQrCode(response);
       // send the URL directly to patient
       // setQrCode(`/doctor/patient-details/${response}`);
