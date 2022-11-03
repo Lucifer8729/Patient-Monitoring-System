@@ -5,13 +5,13 @@ import {
   Grid,
   IconButton,
   Typography,
-} from "@mui/material";
-import KeyboardArrowRightIcon from "@mui/icons-material/KeyboardArrowRight";
-import QrCode2Icon from "@mui/icons-material/QrCode2";
-import BadgeIcon from "@mui/icons-material/Badge";
-import LogoutIcon from "@mui/icons-material/Logout";
-import React from "react";
-
+} from '@mui/material';
+import KeyboardArrowRightIcon from '@mui/icons-material/KeyboardArrowRight';
+import QrCode2Icon from '@mui/icons-material/QrCode2';
+import BadgeIcon from '@mui/icons-material/Badge';
+import LogoutIcon from '@mui/icons-material/Logout';
+import React from 'react';
+import { Link } from 'react-router-dom';
 const DoctorHome = () => {
   return (
     <Grid
@@ -32,25 +32,25 @@ const DoctorHome = () => {
           <Grid item xs={12}>
             <Card
               elevation={4}
-              sx={{ borderRadius: "6%", background: "#3F51B5", color: "white" }}
+              sx={{ borderRadius: '6%', background: '#3F51B5', color: 'white' }}
             >
               <CardContent>
                 <Typography gutterBottom variant="body1" component="div">
                   Welcome,
                 </Typography>
-                <Typography variant="h5" sx={{ fontWeight: "bold" }}>
+                <Typography variant="h5" sx={{ fontWeight: 'bold' }}>
                   Dr. James Martin
                 </Typography>
-                <Typography variant="body2" sx={{ pt: 1, opacity: "60%" }}>
+                <Typography variant="body2" sx={{ pt: 1, opacity: '60%' }}>
                   Cardiologist
                 </Typography>
               </CardContent>
             </Card>
           </Grid>
-          <Grid item xs={12} sx={{ mt: 8 }}>
-            <Card elevation={4} sx={{ borderRadius: "4%" }}>
+          {/* <Grid item xs={12} sx={{ mt: 8 }}>
+            <Card elevation={4} sx={{ borderRadius: '4%' }}>
               <CardActionArea>
-                <CardContent sx={{ padding: "4px 4px" }}>
+                <CardContent sx={{ padding: '4px 4px' }}>
                   <Grid
                     container
                     direction="row"
@@ -62,9 +62,9 @@ const DoctorHome = () => {
                       xs={2}
                       md={3}
                       sx={{
-                        display: "flex",
-                        justifyContent: "center",
-                        flexDirection: "column",
+                        display: 'flex',
+                        justifyContent: 'center',
+                        flexDirection: 'column',
                       }}
                     >
                       <IconButton color="inherit">
@@ -76,13 +76,18 @@ const DoctorHome = () => {
                       xs={8}
                       md={3}
                       sx={{
-                        display: "flex",
-                        justifyContent: "center",
-                        flexDirection: "column",
+                        display: 'flex',
+                        justifyContent: 'center',
+                        flexDirection: 'column',
                       }}
                     >
                       <Typography variant="body1" gutterBottom sx={{ pl: 2 }}>
-                        QR Code Scanner
+                        <Link
+                          to="/doctor/qrs"
+                          style={{ textDecoration: 'none' }}
+                        >
+                          QR Code Scanner
+                        </Link>
                       </Typography>
                     </Grid>
                     <Grid
@@ -90,24 +95,24 @@ const DoctorHome = () => {
                       xs={2}
                       md={3}
                       sx={{
-                        display: "flex",
-                        justifyContent: "center",
+                        display: 'flex',
+                        justifyContent: 'center',
                       }}
                     >
-                      {" "}
+                      {' '}
                       <IconButton color="inherit">
-                        <KeyboardArrowRightIcon sx={{ opacity: "60%" }} />
+                        <KeyboardArrowRightIcon sx={{ opacity: '60%' }} />
                       </IconButton>
                     </Grid>
                   </Grid>
                 </CardContent>
               </CardActionArea>
             </Card>
-          </Grid>
+          </Grid> */}
           <Grid item xs={12} sx={{ mt: 4 }}>
-            <Card elevation={4} sx={{ borderRadius: "4%" }}>
+            <Card elevation={4} sx={{ borderRadius: '4%' }}>
               <CardActionArea>
-                <CardContent sx={{ padding: "4px 4px" }}>
+                <CardContent sx={{ padding: '4px 4px' }}>
                   <Grid
                     container
                     direction="row"
@@ -119,9 +124,9 @@ const DoctorHome = () => {
                       xs={2}
                       md={3}
                       sx={{
-                        display: "flex",
-                        justifyContent: "center",
-                        flexDirection: "column",
+                        display: 'flex',
+                        justifyContent: 'center',
+                        flexDirection: 'column',
                       }}
                     >
                       <IconButton color="inherit">
@@ -133,9 +138,9 @@ const DoctorHome = () => {
                       xs={8}
                       md={3}
                       sx={{
-                        display: "flex",
-                        justifyContent: "center",
-                        flexDirection: "column",
+                        display: 'flex',
+                        justifyContent: 'center',
+                        flexDirection: 'column',
                       }}
                     >
                       <Typography variant="body1" gutterBottom sx={{ pl: 2 }}>
@@ -147,13 +152,13 @@ const DoctorHome = () => {
                       xs={2}
                       md={3}
                       sx={{
-                        display: "flex",
-                        justifyContent: "center",
+                        display: 'flex',
+                        justifyContent: 'center',
                       }}
                     >
-                      {" "}
+                      {' '}
                       <IconButton color="inherit">
-                        <KeyboardArrowRightIcon sx={{ opacity: "60%" }} />
+                        <KeyboardArrowRightIcon sx={{ opacity: '60%' }} />
                       </IconButton>
                     </Grid>
                   </Grid>
@@ -162,9 +167,9 @@ const DoctorHome = () => {
             </Card>
           </Grid>
           <Grid item xs={12} sx={{ mt: 4 }}>
-            <Card elevation={4} sx={{ borderRadius: "4%" }}>
+            <Card elevation={4} sx={{ borderRadius: '4%' }}>
               <CardActionArea>
-                <CardContent sx={{ padding: "4px 4px" }}>
+                <CardContent sx={{ padding: '4px 4px' }}>
                   <Grid
                     container
                     direction="row"
@@ -176,9 +181,9 @@ const DoctorHome = () => {
                       xs={2}
                       md={3}
                       sx={{
-                        display: "flex",
-                        justifyContent: "center",
-                        flexDirection: "column",
+                        display: 'flex',
+                        justifyContent: 'center',
+                        flexDirection: 'column',
                       }}
                     >
                       <IconButton color="inherit">
@@ -190,9 +195,9 @@ const DoctorHome = () => {
                       xs={8}
                       md={3}
                       sx={{
-                        display: "flex",
-                        justifyContent: "center",
-                        flexDirection: "column",
+                        display: 'flex',
+                        justifyContent: 'center',
+                        flexDirection: 'column',
                       }}
                     >
                       <Typography variant="body1" gutterBottom sx={{ pl: 2 }}>
@@ -204,13 +209,13 @@ const DoctorHome = () => {
                       xs={2}
                       md={3}
                       sx={{
-                        display: "flex",
-                        justifyContent: "center",
+                        display: 'flex',
+                        justifyContent: 'center',
                       }}
                     >
-                      {" "}
+                      {' '}
                       <IconButton color="inherit">
-                        <KeyboardArrowRightIcon sx={{ opacity: "60%" }} />
+                        <KeyboardArrowRightIcon sx={{ opacity: '60%' }} />
                       </IconButton>
                     </Grid>
                   </Grid>
