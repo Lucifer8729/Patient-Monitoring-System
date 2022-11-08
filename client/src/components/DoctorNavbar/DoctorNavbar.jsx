@@ -7,7 +7,7 @@ import { useNavigate } from "react-router-dom";
 const DoctorNavbar = () => {
   const navigate = useNavigate();
   const handleHomeClick = () => {
-    navigate(`/`);
+    navigate(`/doctor/home`);
   };
   return (
     <>
