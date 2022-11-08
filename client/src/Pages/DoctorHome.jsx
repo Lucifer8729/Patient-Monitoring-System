@@ -5,19 +5,23 @@ import {
   Grid,
   IconButton,
   Typography,
-} from '@mui/material';
-import KeyboardArrowRightIcon from '@mui/icons-material/KeyboardArrowRight';
-import QrCode2Icon from '@mui/icons-material/QrCode2';
-import BadgeIcon from '@mui/icons-material/Badge';
-import LogoutIcon from '@mui/icons-material/Logout';
-import React from 'react';
-import {Link, useNavigate} from 'react-router-dom';
-import {userLogout} from "../redux/user/user.action";
-import {useDispatch} from "react-redux";
+} from "@mui/material";
+import KeyboardArrowRightIcon from "@mui/icons-material/KeyboardArrowRight";
+import QrCode2Icon from "@mui/icons-material/QrCode2";
+import BadgeIcon from "@mui/icons-material/Badge";
+import LogoutIcon from "@mui/icons-material/Logout";
+import React from "react";
+import { Link, Route, Routes, useNavigate } from "react-router-dom";
+import { userLogout } from "../redux/user/user.action";
+import { useDispatch, useSelector } from "react-redux";
+import DoctorProfile from "./DoctorProfile";
+import { Box } from "@mui/system";
 
 const DoctorHome = () => {
+  const userId = useSelector((state) => state.userReducer.uid);
   const navigate = useNavigate();
   const dispatch = useDispatch();
+  const access_token = useSelector((state) => state.userReducer.access_token);
 
   return (
     <Grid
@@ -38,25 +42,25 @@ const DoctorHome = () => {
           <Grid item xs={12}>
             <Card
               elevation={4}
-              sx={{ borderRadius: '6%', background: '#3F51B5', color: 'white' }}
+              sx={{ borderRadius: "6%", background: "#3F51B5", color: "white" }}
             >
               <CardContent>
                 <Typography gutterBottom variant="body1" component="div">
                   Welcome,
                 </Typography>
-                <Typography variant="h5" sx={{ fontWeight: 'bold' }}>
+                <Typography variant="h5" sx={{ fontWeight: "bold" }}>
                   Dr. James Martin
                 </Typography>
-                <Typography variant="body2" sx={{ pt: 1, opacity: '60%' }}>
+                <Typography variant="body2" sx={{ pt: 1, opacity: "60%" }}>
                   Cardiologist
                 </Typography>
               </CardContent>
             </Card>
           </Grid>
-          {/* <Grid item xs={12} sx={{ mt: 8 }}>
-            <Card elevation={4} sx={{ borderRadius: '4%' }}>
+          <Grid item xs={12} sx={{ mt: 8 }}>
+            <Card elevation={4} sx={{ borderRadius: "4%" }}>
               <CardActionArea>
-                <CardContent sx={{ padding: '4px 4px' }}>
+                <CardContent sx={{ padding: "4px 4px" }}>
                   <Grid
                     container
                     direction="row"
@@ -68,9 +72,9 @@ const DoctorHome = () => {
                       xs={2}
                       md={3}
                       sx={{
-                        display: 'flex',
-                        justifyContent: 'center',
-                        flexDirection: 'column',
+                        display: "flex",
+                        justifyContent: "center",
+                        flexDirection: "column",
                       }}
                     >
                       <IconButton color="inherit">
@@ -82,18 +86,18 @@ const DoctorHome = () => {
                       xs={8}
                       md={3}
                       sx={{
-                        display: 'flex',
-                        justifyContent: 'center',
-                        flexDirection: 'column',
+                        display: "flex",
+                        justifyContent: "center",
+                        flexDirection: "column",
                       }}
                     >
                       <Typography variant="body1" gutterBottom sx={{ pl: 2 }}>
-                        <Link
+                        {/* <Link
                           to="/doctor/qrs"
-                          style={{ textDecoration: 'none' }}
-                        >
-                          QR Code Scanner
-                        </Link>
+                          style={{ textDecoration: "none" }}
+                        > */}
+                        QR Code Scanner
+                        {/* </Link> */}
                       </Typography>
                     </Grid>
                     <Grid
@@ -101,24 +105,24 @@ const DoctorHome = () => {
                       xs={2}
                       md={3}
                       sx={{
-                        display: 'flex',
-                        justifyContent: 'center',
+                        display: "flex",
+                        justifyContent: "center",
                       }}
                     >
-                      {' '}
+                      {" "}
                       <IconButton color="inherit">
-                        <KeyboardArrowRightIcon sx={{ opacity: '60%' }} />
+                        <KeyboardArrowRightIcon sx={{ opacity: "60%" }} />
                       </IconButton>
                     </Grid>
                   </Grid>
                 </CardContent>
               </CardActionArea>
             </Card>
-          </Grid> */}
+          </Grid>
           <Grid item xs={12} sx={{ mt: 4 }}>
-            <Card elevation={4} sx={{ borderRadius: '4%' }}>
+            <Card elevation={4} sx={{ borderRadius: "4%" }}>
               <CardActionArea>
-                <CardContent sx={{ padding: '4px 4px' }}>
+                <CardContent sx={{ padding: "4px 4px" }}>
                   <Grid
                     container
                     direction="row"
@@ -130,9 +134,9 @@ const DoctorHome = () => {
                       xs={2}
                       md={3}
                       sx={{
-                        display: 'flex',
-                        justifyContent: 'center',
-                        flexDirection: 'column',
+                        display: "flex",
+                        justifyContent: "center",
+                        flexDirection: "column",
                       }}
                     >
                       <IconButton color="inherit">
@@ -144,10 +148,11 @@ const DoctorHome = () => {
                       xs={8}
                       md={3}
                       sx={{
-                        display: 'flex',
-                        justifyContent: 'center',
-                        flexDirection: 'column',
+                        display: "flex",
+                        justifyContent: "center",
+                        flexDirection: "column",
                       }}
+                      onClick={() => navigate(`/doctor/profile/${userId}`)}
                     >
                       <Typography variant="body1" gutterBottom sx={{ pl: 2 }}>
                         Profile
@@ -158,13 +163,13 @@ const DoctorHome = () => {
                       xs={2}
                       md={3}
                       sx={{
-                        display: 'flex',
-                        justifyContent: 'center',
+                        display: "flex",
+                        justifyContent: "center",
                       }}
                     >
-                      {' '}
+                      {" "}
                       <IconButton color="inherit">
-                        <KeyboardArrowRightIcon sx={{ opacity: '60%' }} />
+                        <KeyboardArrowRightIcon sx={{ opacity: "60%" }} />
                       </IconButton>
                     </Grid>
                   </Grid>
@@ -173,9 +178,9 @@ const DoctorHome = () => {
             </Card>
           </Grid>
           <Grid item xs={12} sx={{ mt: 4 }}>
-            <Card elevation={4} sx={{ borderRadius: '4%' }}>
+            <Card elevation={4} sx={{ borderRadius: "4%" }}>
               <CardActionArea>
-                <CardContent sx={{ padding: '4px 4px' }}>
+                <CardContent sx={{ padding: "4px 4px" }}>
                   <Grid
                     container
                     direction="row"
@@ -187,9 +192,9 @@ const DoctorHome = () => {
                       xs={2}
                       md={3}
                       sx={{
-                        display: 'flex',
-                        justifyContent: 'center',
-                        flexDirection: 'column',
+                        display: "flex",
+                        justifyContent: "center",
+                        flexDirection: "column",
                       }}
                     >
                       <IconButton color="inherit">
@@ -201,9 +206,9 @@ const DoctorHome = () => {
                       xs={8}
                       md={3}
                       sx={{
-                        display: 'flex',
-                        justifyContent: 'center',
-                        flexDirection: 'column',
+                        display: "flex",
+                        justifyContent: "center",
+                        flexDirection: "column",
                       }}
                       onClick={() => {
                         dispatch(userLogout());
@@ -219,13 +224,13 @@ const DoctorHome = () => {
                       xs={2}
                       md={3}
                       sx={{
-                        display: 'flex',
-                        justifyContent: 'center',
+                        display: "flex",
+                        justifyContent: "center",
                       }}
                     >
-                      {' '}
+                      {" "}
                       <IconButton color="inherit">
-                        <KeyboardArrowRightIcon sx={{ opacity: '60%' }} />
+                        <KeyboardArrowRightIcon sx={{ opacity: "60%" }} />
                       </IconButton>
                     </Grid>
                   </Grid>
@@ -233,6 +238,20 @@ const DoctorHome = () => {
               </CardActionArea>
             </Card>
           </Grid>
+          <Box
+            sx={{
+              flexGrow: 1,
+              // backgroundColor: "#e8eaf6",
+              height: "100vh",
+              width: "100%",
+              pt: 7,
+              pb: 0,
+            }}
+          >
+            {/* <DrawerHeader /> */}
+
+            {/* <PreRegistrationForm /> */}
+          </Box>
         </Grid>
       </Grid>
     </Grid>

@@ -8,10 +8,17 @@ import {
   Typography,
 } from "@mui/material";
 import { Box } from "@mui/system";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
+import { useSelector } from "react-redux";
 import { useParams } from "react-router-dom";
 import DoctorNavbar from "../components/DoctorNavbar/DoctorNavbar";
 import PatientDetailCard from "../components/PatientDetailsCard/PatientDetailsCard";
+
+import axios from "axios";
+
+const API = axios.create({
+  baseURL: "https://pacific-garden-92293.herokuapp.com",
+});
 
 const AVPUoptions = [
   "Alert",
@@ -60,6 +67,26 @@ const PatientDetails = () => {
   const [spO2, setSpO2] = useState("");
   const [cbg, setCbg] = useState("");
 
+  useEffect(() => {
+    // GET request using fetch inside useEffect React hook
+
+    API.get(`/patient/vitals?uid=${uhid}`).then((response) =>
+      console.log(response)
+    );
+
+    // fetch(
+    //   `https://pacific-garden-92293.herokuapp.com/patient/vitals?uid=${uhid}`,
+    //   {
+    //     headers: {
+    //       Authentication:
+    //         "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1aWQiOjEyM…Q1NX0.g_03gxETl5_96V1fTngjelX1Y1c2qD-aKfAlCPVqSVI",
+    //     },
+    //   }
+    // )
+    // .then((response) => response.json())
+    // .then((data) => console.log(data));
+  }, []);
+
   const handleTempChange = (e) => {
     setTemp(e.target.value);
   };
@@ -103,6 +130,19 @@ const PatientDetails = () => {
       cbg: cbg,
     };
     console.log(patientVitals);
+    const requestOptions = {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: patientVitals,
+    };
+    fetch(
+      `https://pacific-garden-92293.herokuapp.com/patient/vitals?uid=${uhid}`,
+      requestOptions
+    )
+      .then((response) => response.json())
+      .then((data) => console.log(data))
+      // .then(navigate("/"))
+      .catch((error) => console.log(error));
   };
 
   return (

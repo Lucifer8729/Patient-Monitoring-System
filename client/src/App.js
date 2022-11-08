@@ -1,14 +1,15 @@
-import React from 'react';
-import { Routes, Route } from 'react-router-dom';
+import React from "react";
+import { Routes, Route } from "react-router-dom";
 
-import Registration from './Pages/Registration';
-import HomeScreen from './Pages/HomeScreen';
-import SignIn from './Pages/SignIn';
-import PreRegistration from './Pages/PreRegistration';
-import PatientQrCode from './Pages/PatientQrCode';
-import DoctorHome from './Pages/DoctorHome';
-import PatientDetails from './Pages/PatientDetails';
-import QRS from './Pages/QRscanner';
+import Registration from "./Pages/Registration";
+import HomeScreen from "./Pages/HomeScreen";
+import SignIn from "./Pages/SignIn";
+import PreRegistration from "./Pages/PreRegistration";
+import PatientQrCode from "./Pages/PatientQrCode";
+import DoctorHome from "./Pages/DoctorHome";
+import PatientDetails from "./Pages/PatientDetails";
+import QRS from "./Pages/QRscanner";
+import DoctorProfile from "./Pages/DoctorProfile";
 
 function App() {
   return (
@@ -23,6 +24,7 @@ function App() {
         path="/doctor/patient-details/:uhid"
         element={<PatientDetails />}
       />
+      <Route path="/doctor/profile/:id" element={<DoctorProfile />} />
       {/* <Route path="/doctor/qrs" element={<QRS />} /> */}
     </Routes>
   );
